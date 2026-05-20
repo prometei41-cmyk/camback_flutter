@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "711483695169",
+    "project_id": "delivery-app-cameback-20-fbcfe",
+    "storage_bucket": "delivery-app-cameback-20-fbcfe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711483695169:android:179a60c430311ad0d3a6c0",
+        "android_client_info": {
+          "package_name": "com.example.delivery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADIP7kPEfeKcCT8Hso9UjLyhezPZGZIuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

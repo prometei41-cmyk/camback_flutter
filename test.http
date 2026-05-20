@@ -1,0 +1,56 @@
+POST http://127.0.0.1:8000/api/users/save_fcm_token/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1Mzg5OTYzLCJpYXQiOjE3NzUzODkwNjMsImp0aSI6ImMwYzE1NTI4NjI5ZTQzZWE4ZjJlMWYxMzI0NmU0OGMzIiwidXNlcl9pZCI6IjEifQ.YCDbOZ5RaT7x_RGVpC9L_L1CPndo3HPyzBDiwW0VGUs
+Content-Type: application/json
+
+{
+  "token": "dLYq8A0_RnSdGcPyGkQkYa:APA91bGpenPiGVWx2zGeSowR4OtTwfVsrjvz9I16_E1J9ixuRgNmChj5IClMRn07UOwI0KdrLR5OrUnmpQCESdVaA94OAlVO4l-6-0KYqp_3fOPnTrilsFs"
+}
+
+###
+POST http://127.0.0.1:8000/api/auth/jwt/create/
+Content-Type: application/json
+
+{
+  "email": "port@tt.com",
+  "password": "portport"
+}
+
+###
+POST http://127.0.0.1:8000/api/users/push/test/
+Content-Type: application/json
+
+{
+  "token": "dLYq8A0_RnSdGcPyGkQkYa:APA91bGpenPiGVWx2zGeSowR4OtTwfVsrjvz9I16_E1J9ixuRgNmChj5IClMRn07UOwI0KdrLR5OrUnmpQCESdVaA94OAlVO4l-6-0KYqp_3fOPnTrilsFs"
+}
+
+###
+### Создание заказа (должен прийти пуш владельцу)
+POST http://127.0.0.1:8000/api/orders/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1Mzk0ODE0LCJpYXQiOjE3NzUzOTM5MTQsImp0aSI6IjhlNzQ3M2JkMGJjMjRiMDc5YTEzZWJlOWFkNWY2MjQ0IiwidXNlcl9pZCI6IjEifQ.HcZcSzVrDN9_ftE_dBu76xUs7c5yxvRmfHEuniO0yxc
+Content-Type: application/json
+
+{
+  "address_id": 1,
+  "payment_method": "card",
+  "delivery_time": "asap",
+  "promo_code": "",
+  "total_price": "550.00",
+  "comment": "Проверка пуша",
+  "items": [
+    {
+      "product_id": 1,
+      "quantity": 2
+    }
+  ]
+}
+###
+POST http://192.168.0.154:8000/api/users/notifications/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2MDA0MzcxLCJpYXQiOjE3NzYwMDM0NzEsImp0aSI6IjY3MTFmMjQ4ZTU1NjQyNmVhOTFkZjYzNWZjYTc0MWQ2IiwidXNlcl9pZCI6IjEifQ.VSaW_6Dc6Uu930bK-kMUrYfN6y5g2dB_-PfA25FnP84
+Content-Type: application/json
+
+{
+  "title": "Тестовое уведомление",
+  "body": "Это тестовое сообщение",
+  "data": {"order_id": "123"}
+}
+

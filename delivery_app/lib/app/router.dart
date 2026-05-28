@@ -14,6 +14,7 @@ import '../features/notifications/presentation/notifications_screen.dart';
 import '../features/order/presentation/order_history_screen.dart';
 import '../features/order/presentation/order_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
+import '../features/home/presentation/search_screen.dart';
 
 class AppRouter {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -36,6 +37,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OrderHistoryScreen());
       case '/notifications':
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
+      case '/search':
+        return MaterialPageRoute(builder: (_) => const SearchScreen());
         
       case '/edit-profile':
         final args = settings.arguments as Map<String, dynamic>;

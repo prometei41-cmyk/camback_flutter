@@ -1,16 +1,43 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const primary = Color(0xFF4A6CF7);
-  static const primaryContainer = Color(0xFFE8EDFF);
+  // Основные цвета
+  static const Color primary = Color(0xFFF9616E); // Пример основного цвета
+  static const Color secondary = Color(0xFF1E88E5); // Пример вторичного цвета
+  static const Color accent = Color(0xFFFFC107); // Пример акцентного цвета
 
-  static const secondary = Color(0xFF6C7A91);
-  static const secondaryContainer = Color(0xFFF3F5F9);
+  // Цвета для текста
+  static const Color textPrimary = Colors.black87;
+  static const Color textSecondary = Colors.black54;
+  static const Color textLight = Colors.white;
 
-  static const background = Color(0xFFFFFFFF);
-  static const surface = Color(0xFFF8F9FC);
+  // Цвета для фона
+  static const Color background = Colors.white;
+  static const Color scaffoldBackground = Color(0xFFF5F5F5); // Светло-серый фон
 
-  static const error = Color(0xFFE53935);
+  // Цвета для состояний
+  static const Color error = Colors.red;
+  static const Color success = Colors.green;
+  static const Color warning = Colors.orange;
+
+  // --- Новые цвета для градиента ---
+  // Эти цвета - просто примеры. Выберите те, которые вам больше нравятся.
+  static const Color primaryGradientStart = Color(0xFFF9616E); // Начинается с основного цвета
+  static const Color primaryGradientEnd = Color(0xFFFF979F);   // Более светлый оттенок основного цвета
+  // Если хотите другой градиент:
+  // static const Color primaryGradientStart = Color(0xFF4CAF50); // Зеленый
+  // static const Color primaryGradientEnd = Color(0xFF81C784);   // Светло-зеленый
+
+  // Дополнительные цвета, если нужны
+  static const Color greyLight = Color(0xFFEEEEEE);
+  static const Color greyMedium = Color(0xFFBDBDBD);
+  static const Color greyDark = Color(0xFF616161);
+
+  // Пример определения цвета для кнопки
+  static Color getPrimaryButtonColor(BuildContext context) {
+    // Можно возвращать AppColors.primary или что-то другое в зависимости от темы
+    return primary;
+  }
 }
 
 class AppSpacing {

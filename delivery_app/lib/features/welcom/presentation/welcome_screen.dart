@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// Импортируем наш новый класс AppText
+import '../../../core/theme/app_text.dart';
+import '../../../core/theme/app_tokens.dart'; // Также импортируем AppColors
+
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -36,86 +40,56 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       nextRoute = '/login';
     }
 
-    if (mounted) {
-      Navigator.pushReplacementNamed(context, nextRoute);
+    // Используем pushReplacementNamed, чтобы WelcomeScreen не оставался в стеке
+    if (mounted) { // Проверяем, что виджет все еще в дереве
+      Navigator.of(context).pushReplacementNamed(nextRoute);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Убираем AppBar, так как у нас splash-экран
+      // appBar: AppBar(),
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
         decoration: BoxDecoration(
+          // Используем градиент или цвет из AppColors
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF667eea),
-              Color(0xFF764ba2),
+            colors: [AppColors.primaryGradientStart, AppColors.primaryGradientEnd], // Пример градиента
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          // Или просто цвет:
+          // color: AppColors.primary,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Логотип или название приложения
+              // Используем AppText.h1 для заголовка
+              AppText.h1(
+                'FoodHub',
+                color: Colors.white,
+                textAlign: TextAlign.center,
+                fontSize: 48, // Указываем нужный размер
+                fontWeight: FontWeight.bold, // Указываем жирность
+              ),
+              const SizedBox(height: AppSpacing.lg), // Используем AppSpacing
+
+              // Подзаголовок
+              // Используем AppText.medium для подзаголовка
+              AppText.medium(
+                'Быстрая доставка вкусной еды',
+                color: Colors.white.withOpacity(0.8),
+                fontSize: 16,
+                textAlign: TextAlign.center,
+                lineHeight: 1.5, // Опционально, если нужно настроить межстрочный интервал
+              ),
+              // Кнопка убрана - экран автоматически переходит через 3 секунды
             ],
           ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // Верхняя часть - изображение
-            Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/cafe.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.black.withOpacity(0.2),
-                        Colors.black.withOpacity(0.7),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // Нижняя часть - информация (убрали кнопку)
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Название кафе
-                  Text(
-                    'FoodHub',
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 48,
-                    ),
-                  ),
-                  SizedBox(height: 12),
-
-                  // Подзаголовок
-                  Text(
-                    'Быстрая доставка вкусной еды',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Colors.white.withOpacity(0.8),
-                      fontSize: 16,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  // Кнопка убрана - экран автоматически переходит через 3 секунды
-                ],
-              ),
-            ),
-          ],
         ),
       ),
     );
